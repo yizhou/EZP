@@ -1,0 +1,4 @@
+..\editor\keyedit.c(16): Warning! W202: Symbol 'HBox' has been defined, but not referenced
+..\editor\keyedit.c(16): Warning! W202: Symbol 's' has been defined, but not referenced
+..\editor\keyedit.c(2063): Warning! W202: Symbol 'Position' has been defined, but not referenced
+..\editor\keyedit.c(2090): Warning! W202: Symbol 'Position' has been defined, but not referenced

@@ -1,0 +1,298 @@
+DEBUG = 0
+OPTIMIZE = 1
+PROJ = ezp
+CC = wcc386
+
+OBJECTS =  \
+         printcut.obj instfont.obj selfontc.obj\
+         drawc.obj  chinesec.obj messagec.obj timer.obj\
+         mousec.obj windowc.obj mainc.obj varc.obj \
+         keyc.obj buttonc.obj menuc.obj singlelc.obj \
+         listboxc.obj comboc.obj scrollc.obj express.obj\
+         framec.obj radiobnc.obj dialogc.obj tranfile.obj\
+         userfunc.obj func2.obj menucmd1.obj windeftc.obj \
+         userprnc.obj profilec.obj ezplogc.obj dbf.obj\
+         userboxc.obj informc.obj statictc.obj userpage.obj \
+         userattr.obj idle.obj openfilc.obj convert.obj \
+         memory.obj \
+         itemsc.obj pagec.obj boxc.obj rotatec.obj \
+         fixedc.obj filec.obj clpboard.obj undo.obj \
+         form.obj lines.obj  printc.obj \
+         groupc.obj polyfunc.obj boxeditc.obj bldchar.obj\
+         cursorc.obj keyedit.obj findc.obj buildstr.obj \
+         polyfill.obj marklist.obj format.obj region.obj \
+         font.obj true.obj imagec.obj tifffill.obj unlzw.obj \
+         floyd.obj CLPLINEC.obj cache.obj userfaxc.obj faxc.obj\
+         devcolor.obj devbw.obj tabdatac.obj\
+         devbjc.obj devhp.obj devbj.obj devlq24.obj devlq16.obj\
+         devcdj.obj devsc.obj devescp.obj devbj10.obj devm1724.obj \
+         devstarc.obj \
+         devoki.obj devdcl.obj devtiff.obj devpcx.obj devfax.obj\
+
+!if "$(OPTIMIZE)"=="1"
+#CFLAGS = -oneatx -zq -zp4 -5 -fp3 -fpi87 -w3 -s
+CFLAGS = -os -zq -zp1 -fp3 -fpi87 -w3 -s
+
+!else
+CFLAGS =  -zq -zp1 -w3 -s
+!endif
+
+!if "$(DEBUG)"=="1"
+CFLAGS =  -zq -zp1 -w3 -d3
+!endif
+
+all: $(PROJ).EXE
+back:
+    pkzip -u pip *.c *.h makefile
+run:
+    make all
+    $(PROJ).EXE $(FILE)
+
+rebuild:
+   del *.obj
+   make all
+
+.c.obj:
+        $(CC) $(CFLAGS)  $*.c
+
+ezplogc.obj: ezplogc.c
+#        $(CC) -zq -zp1 -w3 -d3 -s ezplogc.c
+
+drawc.obj:  drawc.c
+
+printcut.obj: printcut.c
+
+instfont.obj: instfont.c
+
+chinesec.obj:  chinesec.c
+
+messagec.obj:  messagec.c
+
+mousec.obj:  mousec.c
+
+timer.obj:  timer.c
+
+windowc.obj:  windowc.c
+
+mainc.obj:  mainc.c
+
+varc.obj:  varc.c
+
+keyc.obj:  keyc.c
+
+buttonc.obj:  buttonc.c
+
+menuc.obj:  menuc.c
+
+singlelc.obj:  singlelc.c
+
+listboxc.obj:  listboxc.c
+
+comboc.obj:  comboc.c
+
+scrollc.obj:  scrollc.c
+
+framec.obj:  framec.c
+
+radiobnc.obj:  radiobnc.c
+
+dialogc.obj:  dialogc.c
+
+userfunc.obj:  userfunc.c
+
+func2.obj:  func2.c
+
+menucmd1.obj:  menucmd1.c
+
+windeftc.obj:  windeftc.c
+
+userboxc.obj:  userboxc.c
+
+dbf.obj:  dbf.c
+
+
+informc.obj:  informc.c
+
+statictc.obj:  statictc.c
+
+userprnc.obj:  userprnc.c
+
+profilec.obj:  profilec.c
+
+#cover.obj:  cover.c
+#
+userpage.obj:  userpage.c
+
+userfaxc.obj:  userfaxc.c
+
+faxc.obj:  faxc.c
+
+userattr.obj:  userattr.c
+
+idle.obj:  idle.c
+
+openfilc.obj:  openfilc.c
+
+selfontc.obj:  selfontc.c
+
+
+express.obj:  express.c
+
+tranfile.obj:  tranfile.c
+
+convert.obj: convert.c
+
+memory.obj:  memory.c  ..\kernl\handlec.c
+
+itemsc.obj:  ..\kernl\itemsc.c
+        $(CC) $(CFLAGS) ..\kernl\itemsc.c
+
+tabdatac.obj:  ..\kernl\tabdatac.c
+        $(CC) $(CFLAGS) ..\kernl\tabdatac.c
+
+pagec.obj:  ..\kernl\pagec.c
+        $(CC) $(CFLAGS) ..\kernl\pagec.c
+
+boxc.obj:  ..\kernl\boxc.c
+        $(CC) $(CFLAGS) ..\kernl\boxc.c
+
+rotatec.obj:  ..\kernl\rotatec.c
+        $(CC) $(CFLAGS) ..\kernl\rotatec.c
+
+fixedc.obj:  ..\kernl\fixedc.c
+        $(CC) $(CFLAGS) ..\kernl\fixedc.c
+
+filec.obj:  ..\kernl\filec.c
+        $(CC) $(CFLAGS) ..\kernl\filec.c
+
+clpboard.obj:  ..\kernl\clpboard.c
+        $(CC) $(CFLAGS) ..\kernl\clpboard.c
+
+undo.obj:  ..\kernl\undo.c
+        $(CC) $(CFLAGS) ..\kernl\undo.c
+
+form.obj:  ..\kernl\form.c
+        $(CC) $(CFLAGS) ..\kernl\form.c
+
+lines.obj:  ..\kernl\lines.c
+        $(CC) $(CFLAGS) ..\kernl\lines.c
+
+printc.obj:  ..\kernl\printc.c ..\kernl\pattn6.h
+        $(CC) $(CFLAGS) ..\kernl\printc.c
+
+groupc.obj:  ..\kernl\groupc.c
+        $(CC) $(CFLAGS) ..\kernl\groupc.c
+
+polyfunc.obj:  ..\kernl\polyfunc.c
+        $(CC) $(CFLAGS) ..\kernl\polyfunc.c
+
+bldchar.obj:  ..\kernl\bldchar.c
+        $(CC) $(CFLAGS) ..\kernl\bldchar.c
+
+devcolor.obj:  ..\kernl\devcolor.c
+        $(CC) $(CFLAGS) ..\kernl\devcolor.c
+
+devbw.obj:  ..\kernl\devbw.c
+        $(CC) $(CFLAGS) ..\kernl\devbw.c
+
+boxeditc.obj:  ..\editor\boxeditc.c
+        $(CC) $(CFLAGS) ..\editor\boxeditc.c
+
+cursorc.obj:  ..\editor\cursorc.c
+        $(CC) $(CFLAGS) ..\editor\cursorc.c
+
+keyedit.obj:  ..\editor\keyedit.c
+        $(CC) $(CFLAGS) ..\editor\keyedit.c
+
+findc.obj:  ..\editor\findc.c
+        $(CC) $(CFLAGS) ..\editor\findc.c
+
+buildstr.obj:  ..\format\buildstr.c
+        $(CC) $(CFLAGS) ..\format\buildstr.c
+
+cache.obj:  ..\format\cache.c
+        $(CC) $(CFLAGS) ..\format\cache.c
+
+polyfill.obj:  ..\format\polyfill.c
+        $(CC) $(CFLAGS) ..\format\polyfill.c
+
+marklist.obj:  ..\format\marklist.c
+        $(CC) $(CFLAGS) ..\format\marklist.c
+
+format.obj:  ..\format\format.c
+        $(CC) $(CFLAGS) ..\format\format.c
+
+region.obj:  ..\format\region.c
+        $(CC) $(CFLAGS) ..\format\region.c
+
+font.obj:  ..\format\font.c
+        $(CC) $(CFLAGS) ..\format\font.c
+
+true.obj:  ..\format\true.c
+        $(CC) $(CFLAGS) ..\format\true.c
+
+imagec.obj:  ..\image\imagec.c
+        $(CC) $(CFLAGS) ..\image\imagec.c
+
+tifffill.obj:  ..\image\tifffill.c
+        $(CC) $(CFLAGS) ..\image\tifffill.c
+
+unlzw.obj:  ..\image\unlzw.c
+        $(CC) $(CFLAGS) ..\image\unlzw.c
+
+floyd.obj:  ..\image\floyd.c
+        $(CC) $(CFLAGS) ..\image\floyd.c
+
+clplinec.obj:  ..\image\clplinec.c
+        $(CC) $(CFLAGS) ..\image\clplinec.c
+
+devbjc.obj:  ..\printer\devbjc.c
+        $(CC) $(CFLAGS) ..\printer\devbjc.c
+
+devhp.obj:  ..\printer\devhp.c
+        $(CC) $(CFLAGS) ..\printer\devhp.c
+
+devbj.obj:  ..\printer\devbj.c
+        $(CC) $(CFLAGS) ..\printer\devbj.c
+
+devlq24.obj:  ..\printer\devlq24.c
+        $(CC) $(CFLAGS) ..\printer\devlq24.c
+
+devlq16.obj:  ..\printer\devlq16.c
+        $(CC) $(CFLAGS) ..\printer\devlq16.c
+
+devcdj.obj:  ..\printer\devcdj.c
+        $(CC) $(CFLAGS) ..\printer\devcdj.c
+
+devsc.obj:  ..\printer\devsc.c
+        $(CC) $(CFLAGS) ..\printer\devsc.c
+
+devescp.obj:  ..\printer\devescp.c
+        $(CC) $(CFLAGS) ..\printer\devescp.c
+
+devbj10.obj:  ..\printer\devbj10.c
+        $(CC) $(CFLAGS) ..\printer\devbj10.c
+
+devm1724.obj:  ..\printer\devm1724.c
+        $(CC) $(CFLAGS) ..\printer\devm1724.c
+
+devoki.obj:  ..\printer\devoki.c
+        $(CC) $(CFLAGS) ..\printer\devoki.c
+
+devstarc.obj:  ..\printer\devstarc.c
+        $(CC) $(CFLAGS) ..\printer\devstarc.c
+
+devdcl.obj:  ..\printer\devdcl.c
+        $(CC) $(CFLAGS) ..\printer\devdcl.c
+
+devtiff.obj:  ..\printer\devtiff.c
+        $(CC) $(CFLAGS) ..\printer\devtiff.c
+
+devpcx.obj:  ..\printer\devpcx.c
+        $(CC) $(CFLAGS) ..\printer\devpcx.c
+
+devfax.obj:  ..\printer\devfax.c
+        $(CC) $(CFLAGS) ..\printer\devfax.c
+
+$(PROJ).EXE:: $(OBJECTS) $(GRAPHICS)
+    wlink @opt.tr @objs.tr

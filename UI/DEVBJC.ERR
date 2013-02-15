@@ -1,0 +1,2 @@
+..\printer\devbjc.c(9): Warning! W202: Symbol 'pagew' has been defined, but not referenced
+..\printer\devbjc.c(9): Warning! W202: Symbol 'pageh' has been defined, but not referenced

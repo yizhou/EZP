@@ -1,0 +1,6 @@
+..\printer\devoki.c(65): Warning! W202: Symbol 'y' has been defined, but not referenced
+..\printer\devoki.c(65): Warning! W202: Symbol 'm' has been defined, but not referenced
+..\printer\devoki.c(65): Warning! W202: Symbol 'k' has been defined, but not referenced
+..\printer\devoki.c(65): Warning! W202: Symbol 'c' has been defined, but not referenced
+..\printer\devoki.c(161): Warning! W202: Symbol 'pagew' has been defined, but not referenced
+..\printer\devoki.c(161): Warning! W202: Symbol 'pageh' has been defined, but not referenced

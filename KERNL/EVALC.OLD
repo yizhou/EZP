@@ -1,0 +1,224 @@
+/*-------------------------------------------------------------------
+* Name: evalc.c
+* compiler :  Watcom C 10.0
+* Copyright (c) 1994,1995 REDTEK BUSINESS TECHNOLOGY LTD.
+-------------------------------------------------------------------*/
+#include "ezpHead.h"
+#include <setjmp.h>
+
+#define ERR()   (longjmp(jb,1))
+#define NUM             1
+
+/* The following macros are ASCII dependant, no EBCDIC here! */
+#define isnumer(c)  ((c >= '0' && c <= '9') || c == '.')
+#define isdelim(c)  (c == '+' || c == '-' || c == '*' || c == '/' || c == '%' \
+                    || c == '^' || c == '(' || c == ')' )
+
+unsigned char  *expression;          /* Pointer to the user's expression */
+unsigned char  *token;
+int            type;                /* Type of the current token */
+jmp_buf        jb;                  /* jmp_buf for errors */
+
+static void Level2( double *r );
+
+/*************************************************************************
+** This function is used to grab the next token from the expression that **
+** is being evaluated.                                                   **
+ *************************************************************************/
+static void Parse()
+{
+   char *t;
+
+   type = 0;
+   t = token;
+
+   if( isdelim( *expression ) )
+   {
+      *t++ = *expression++;
+   }
+   else if( isnumer( *expression ) )
+   {
+      type = NUM;
+      while( isnumer( *expression ) )
+         *t++ = *expression++;
+   }
+   else if( *expression )
+   {
+      ERR();
+   }
+
+   *t = 0;
+}
+
+/*************************************************************************
+** This function handles any literal numbers, variables, or functions.   **
+ *************************************************************************/
+static Level6( double *r )
+{
+   if( *token == '(' )
+   {
+      Parse();
+      if( *token == ')' )
+         ERR( );
+      Level2( r );
+      if( *token != ')' )
+         ERR( );
+      Parse();
+   }
+   else
+   {
+      if( type == NUM )
+      {
+         *r = (double) atof( token );
+         Parse();
+      }
+      else
+         ERR( );
+   }
+}
+
+/*************************************************************************
+** This function handles any unary + or - signs.                         **
+ *************************************************************************/
+static Level5( double *r )
+{
+   char op;
+
+   op=*token;
+   if( op == '+' || op == '-' )
+      Parse();
+
+   Level6( r );
+   if( op == '-' )
+      *r = -*r;
+}
+
+/*************************************************************************
+** This function handles any "to the power of" operations.               **
+ *************************************************************************/
+static void Level4( double *r )
+{
+   double t;
+
+   Level5( r );
+   if( *token == '^' )
+   {
+      Parse();
+      Level5( &t );
+      *r = pow( *r, t );
+   }
+}
+
+/*************************************************************************
+** This function handles any multiplication, division, or modulo.        **
+ *************************************************************************/
+static void Level3( double *r )
+{
+   double t;
+   char op;
+
+   Level4( r );
+   while( (op = *token) == '*' || op == '/' || op == '%' )
+   {
+      Parse();
+      Level4( &t );
+      switch (op)
+      {
+         case '*':
+            *r = *r * t;
+            break;
+         case '/':
+            if( t == 0 )
+               ERR();
+            *r = *r / t;
+            break;
+         case '%':
+            if( t == 0 )
+               ERR( );
+            *r = fmod( *r, t );
+            break;
+      } /* end of switch */
+   } /*- while -*/
+}
+
+/*************************************************************************
+** This function handles any addition and subtraction operations.        **
+ *************************************************************************/
+static void Level2( double *r )
+{
+   double t = 0;
+   char op;
+
+   Level3( r );
+   while( (op = *token) == '+' || op == '-' )
+   {
+      Parse();
+      Level3( &t );
+      if( op == '+' )
+         *r = *r + t;
+      else /* if( op == '-' ) */
+         *r = *r - t;
+   }
+}
+
+/* Remove whitespace & capitalize */
+static void pack(char *str)
+{
+      char *ptr = str, *p;
+
+      strupr(str);
+      for(; *ptr; ++ptr)
+      {
+            p = ptr;
+            while (*p && isspace(*p)) p++;
+            if (ptr != p)
+                  strcpy(ptr, p);
+      }
+}
+
+/*************************************************************************
+** This function is called to evaluate the expression E and return the   **
+** answer in RESULT.
+** Returns E_OK if the expression is valid, or an error code.            **
+ *************************************************************************/
+evaluate( char *e, double *result)
+{
+   if( setjmp( jb ) )
+      return( 1 );
+
+   token=(char *)&TmpBuf;
+   pack(e);
+   expression = e;
+   *result = 0;
+   Parse();
+   if( ! *token )
+      return(2);
+
+   Level2( result );
+   return( 0 );
+}
+
+#ifdef EVAL_TEST
+main( int argc, char* argv[] )
+{
+   double  result;
+   int   i;
+   char  line[1024];
+
+   /* If we have command line arguments then we evaluate them and exit. */
+   if( argc > 1 )
+   {
+      /* Concatenate all arguments into one string. */
+      strcpy( line, argv[1] );
+      for( i = 2; i < argc; i++ )
+         strcat( line, argv[i] );
+
+      /* Call the evaluator. */
+      if( evaluate(line, &result)==0 )
+         printf( "%.4g\n", result );
+      else
+         printf( "Error.\n" );
+   }
+}
+#endif
+

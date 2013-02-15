@@ -1,0 +1,2 @@
+..\printer\devstarc.c(154): Warning! W202: Symbol 'pagew' has been defined, but not referenced
+..\printer\devstarc.c(154): Warning! W202: Symbol 'pageh' has been defined, but not referenced

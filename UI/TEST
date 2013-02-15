@@ -1,0 +1,161 @@
+///////////////////FAXINFO/////////////////////////
+#define FAX_W  250
+#define FAX_H  105
+#include "faxicon.h"
+
+#define NULL_MODE 0
+#define SEND_MODE 1
+#define RECEIVE_MODE 2
+#define DIAL_MODE 3
+#define CONNECT_MODE 4
+#define ERROR_MODE 5
+
+int fax_x,fax_y;
+
+FaxStatus(char *str, int mode)
+{
+   struct viewporttype ViewInformation;
+   int Length;
+
+   getviewsettings(&ViewInformation);
+   MouseHidden();
+   setviewport(0,0,getmaxx(),getmaxy(),1);
+
+
+   setfillstyle(1,EGA_LIGHTGRAY);
+   bar(fax_x+86,fax_y+56,fax_x+FAX_W-5,fax_y+72);
+   ViewportDisplayString(str,fax_x+86,fax_y+56,
+                          EGA_BLACK,EGA_LIGHTGRAY);
+
+   switch(mode) {
+     case NULL_MODE:
+          setcolor(EGA_BLACK);
+          line(fax_x+43,fax_y+25,fax_x+206,fax_y+25);
+          line(fax_x+43,fax_y+28,fax_x+206,fax_y+28);
+          break;
+     case SEND_MODE:
+          setcolor(EGA_LIGHTGREEN);
+          line(fax_x+43,fax_y+25,fax_x+206,fax_y+25);
+          setcolor(EGA_BLACK);
+          line(fax_x+43,fax_y+28,fax_x+206,fax_y+28);
+          break;
+     case RECEIVE_MODE:
+          setcolor(EGA_BLACK);
+          line(fax_x+43,fax_y+25,fax_x+206,fax_y+25);
+          setcolor(EGA_LIGHTGREEN);
+          line(fax_x+43,fax_y+28,fax_x+206,fax_y+28);
+          break;
+     case DIAL_MODE:
+          setcolor(EGA_YELLOW);
+          line(fax_x+43,fax_y+25,fax_x+206,fax_y+25);
+          setcolor(EGA_BLACK);
+          line(fax_x+43,fax_y+28,fax_x+206,fax_y+28);
+          break;
+     case CONNECT_MODE:
+          setcolor(EGA_LIGHTGREEN);
+          line(fax_x+43,fax_y+25,fax_x+206,fax_y+25);
+          line(fax_x+43,fax_y+28,fax_x+206,fax_y+28);
+          break;
+     case ERROR_MODE:
+          setcolor(EGA_LIGHTRED);
+          line(fax_x+43,fax_y+25,fax_x+206,fax_y+25);
+          line(fax_x+43,fax_y+28,fax_x+206,fax_y+28);
+          break;
+   }
+   setviewport(ViewInformation.left,ViewInformation.top,
+               ViewInformation.right,ViewInformation.bottom,
+               ViewInformation.clip);
+   MouseShow();
+}
+
+FaxHint(char *str)
+{
+   struct viewporttype ViewInformation;
+   int Length;
+
+   getviewsettings(&ViewInformation);
+   MouseHidden();
+   setviewport(0,0,getmaxx(),getmaxy(),1);
+
+   setfillstyle(1,EGA_LIGHTGRAY);
+   bar(fax_x+62,fax_y+82,fax_x+FAX_W-5,fax_y+98);
+
+   ViewportDisplayString(str,fax_x+62,fax_y+82,
+                          EGA_BLACK,EGA_LIGHTGRAY);
+
+   setviewport(ViewInformation.left,ViewInformation.top,
+               ViewInformation.right,ViewInformation.bottom,
+               ViewInformation.clip);
+   MouseShow();
+}
+
+FaxUIOpen()
+{
+   struct viewporttype ViewInformation;
+   int Length;
+   char *pImage;
+
+   getviewsettings(&ViewInformation);
+   MouseHidden();
+   setviewport(0,0,getmaxx(),getmaxy(),1);
+
+   fax_x = (getmaxx()-FAX_W)/2;
+   fax_y = (getmaxy()-FAX_H)/2;
+
+   Length=imagesize(fax_x,fax_y,fax_x+FAX_W,fax_y+FAX_H);
+   pImage=(char *)malloc(i);
+   //if(pImage==NULL)
+   if(pImage<0x1000)
+   {
+      ReportMemoryError("creatfaxui");
+      return -1;
+   }
+   getimage(fax_x,fax_y,fax_x+FAX_W,fax_y+FAX_H,pImage);
+
+   setfillstyle(1,EGA_LIGHTGRAY);
+   bar(fax_x,fax_y,fax_x+FAX_W,fax_y+FAX_H);
+   setcolor(EGA_WHITE);
+   line(fax_x+1,fax_y+1,fax_x+1,fax_y+FAX_H-1);
+   line(fax_x+1,fax_y+1,fax_x+FAX_W-1,fax_y+1);
+   setcolor(EGA_DARKGRAY);
+   line(fax_x+FAX_W-1,fax_y+1,fax_x+FAX_W-1,fax_y+FAX_H-1);
+   line(fax_x+1,fax_y+FAX_H-1,fax_x+FAX_W-1,fax_y+FAX_H-1);
+   _putimage(fax_x+8,fax_y+4,faxicon,_GPSET);
+   _putimage(fax_x+FAX_W-47,fax_y+4,faxicon,_GPSET);
+   setcolor(EGA_BLACK);
+   line(fax_x+43,fax_y+25,fax_x+206,fax_y+25);
+   line(fax_x+43,fax_y+28,fax_x+206,fax_y+28);
+
+   ViewportDisplayString("工作状态:",fax_x+14,fax_y+56,
+                          EGA_BLACK,EGA_LIGHTGRAY);
+
+   setcolor(EGA_WHITE);
+   line(fax_x+14,fax_y+76,fax_x+236,fax_y+76);
+   setcolor(EGA_DARKGRAY);
+   line(fax_x+14,fax_y+75,fax_x+236,fax_y+75);
+
+
+   ViewportDisplayString("提示:",fax_x+14,fax_y+82,
+                          EGA_BLACK,EGA_LIGHTGRAY);
+
+   setviewport(ViewInformation.left,ViewInformation.top,
+               ViewInformation.right,ViewInformation.bottom,
+               ViewInformation.clip);
+   MouseShow();
+}
+
+TestFax()
+{
+   FaxUIOpen();
+   FaxHint("按ESC键退出");
+   FaxStatus("初始化调制解调器...",NULL_MODE); getch();
+   FaxStatus("本MODEM无传真功能!",ERROR_MODE); getch();
+   FaxStatus("拨号01062532584",DIAL_MODE);getch();
+   FaxStatus("建立连接...",CONNECT_MODE);getch();
+   FaxStatus("远程连接失败!",ERROR_MODE); getch();
+   FaxStatus("开始传真...",SEND_MODE); getch();
+   FaxStatus("正在传送第10页...",SEND_MODE);getch();
+   FaxStatus("挂机...",DIAL_MODE); getch();
+   FaxStatus("传真发送完毕!",NULL_MODE); getch();
+}
+

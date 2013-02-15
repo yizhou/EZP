@@ -1,0 +1,4 @@
+..\format\format.c(269): Warning! W202: Symbol 'descent' has been defined, but not referenced
+..\format\format.c(268): Warning! W202: Symbol 'dir' has been defined, but not referenced
+..\format\format.c(269): Warning! W202: Symbol 'ascent' has been defined, but not referenced
+..\format\format.c(1262): Warning! W301: No prototype found for 'ReportMemoryError'

@@ -1,0 +1,6 @@
+..\printer\devbj10.c(13): Warning! W202: Symbol 'pagew' has been defined, but not referenced
+..\printer\devbj10.c(13): Warning! W202: Symbol 'pageh' has been defined, but not referenced
+..\printer\devbj10.c(106): Warning! W202: Symbol 'y' has been defined, but not referenced
+..\printer\devbj10.c(106): Warning! W202: Symbol 'm' has been defined, but not referenced
+..\printer\devbj10.c(106): Warning! W202: Symbol 'k' has been defined, but not referenced
+..\printer\devbj10.c(106): Warning! W202: Symbol 'c' has been defined, but not referenced

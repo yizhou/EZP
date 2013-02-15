@@ -1,0 +1,7 @@
+..\printer\devlq16.c(67): Warning! W202: Symbol 'y' has been defined, but not referenced
+..\printer\devlq16.c(67): Warning! W202: Symbol 'm' has been defined, but not referenced
+..\printer\devlq16.c(67): Warning! W202: Symbol 'k' has been defined, but not referenced
+..\printer\devlq16.c(67): Warning! W202: Symbol 'c' has been defined, but not referenced
+..\printer\devlq16.c(116): Warning! W202: Symbol 'i' has been defined, but not referenced
+..\printer\devlq16.c(161): Warning! W202: Symbol 'pagew' has been defined, but not referenced
+..\printer\devlq16.c(161): Warning! W202: Symbol 'pageh' has been defined, but not referenced

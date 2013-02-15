@@ -1,0 +1,6 @@
+..\printer\devescp.c(10): Warning! W202: Symbol 'pagew' has been defined, but not referenced
+..\printer\devescp.c(10): Warning! W202: Symbol 'pageh' has been defined, but not referenced
+..\printer\devescp.c(133): Warning! W202: Symbol 'y' has been defined, but not referenced
+..\printer\devescp.c(133): Warning! W202: Symbol 'm' has been defined, but not referenced
+..\printer\devescp.c(133): Warning! W202: Symbol 'k' has been defined, but not referenced
+..\printer\devescp.c(133): Warning! W202: Symbol 'c' has been defined, but not referenced

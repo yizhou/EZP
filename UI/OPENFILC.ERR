@@ -1,0 +1,3 @@
+openfilc.c(25): Warning! W202: Symbol 'errval' has been defined, but not referenced
+openfilc.c(25): Warning! W202: Symbol 'deverr' has been defined, but not referenced
+openfilc.c(25): Warning! W202: Symbol 'devhdr' has been defined, but not referenced

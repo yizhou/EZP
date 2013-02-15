@@ -1,0 +1,4 @@
+..\kernl\devcolor.c(137): Warning! W202: Symbol 'y' has been defined, but not referenced
+..\kernl\devcolor.c(137): Warning! W202: Symbol 'm' has been defined, but not referenced
+..\kernl\devcolor.c(137): Warning! W202: Symbol 'k' has been defined, but not referenced
+..\kernl\devcolor.c(137): Warning! W202: Symbol 'c' has been defined, but not referenced

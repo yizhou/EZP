@@ -1,0 +1,2 @@
+..\kernl\groupc.c(9): Warning! W202: Symbol 'GroupHeight' has been defined, but not referenced
+..\kernl\groupc.c(9): Warning! W202: Symbol 'GroupWidth' has been defined, but not referenced

@@ -1,0 +1,2 @@
+..\format\font.c(207): Warning! W202: Symbol 'lpdc' has been defined, but not referenced
+..\format\font.c(984): Warning! W202: Symbol 'pattern' has been defined, but not referenced

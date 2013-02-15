@@ -1,0 +1,3 @@
+name ezp option stack=100K op caseexact
+option stub=wstubq.exe
+

@@ -1,0 +1,2 @@
+..\image\tifffill.c(1526): Warning! W202: Symbol 'TiffSign' has been defined, but not referenced
+..\image\tifffill.c(520): Warning! W301: No prototype found for 'ReportMemoryError'

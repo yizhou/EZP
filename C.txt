@@ -1,0 +1,113 @@
+
+目录：\EDITOR  编辑处理子系统
+C:\EZP3\EDITOR\BOXEDITC.C     抽象编辑功能的实现
+C:\EZP3\EDITOR\CURSORC.C      光标处理
+C:\EZP3\EDITOR\FINDC.C        查找和替换
+C:\EZP3\EDITOR\KEYEDIT.C      键盘编辑动作实现
+
+目录: \FORMAT 排版处理子系统
+C:\EZP3\FORMAT\BUILDSTR.C     显示（打印）一个字符串
+C:\EZP3\FORMAT\CACHE.C        为加快速度提供的缓存模块
+C:\EZP3\FORMAT\FONT.C         显示字体的接口（高级字体接口）
+C:\EZP3\FORMAT\FORMAT.C       排版处理总程序
+C:\EZP3\FORMAT\MARKLIST.C     样式块处理
+C:\EZP3\FORMAT\POLYFILL.C     多边形填充算法
+C:\EZP3\FORMAT\REGION.C       计算不规则排版边界算法
+C:\EZP3\FORMAT\TRUE.C         TRUETYPE 字体实现
+
+目录: \HELP  制作EZP.HLP
+C:\EZP3\HELP\HC.C            
+C:\EZP3\HELP\HP.C
+
+
+目录: \IMAGE 图像处理子系统 
+C:\EZP3\IMAGE\CLPLINEC.C     计算图像的裁剪区
+C:\EZP3\IMAGE\FLOYD.C        图像抖动算法
+C:\EZP3\IMAGE\IMAGEC.C       图像处理主程序
+C:\EZP3\IMAGE\TIFFFILL.C     TIF图像程序
+C:\EZP3\IMAGE\UNLZW.C        TIF解压缩模块
+
+目录: \KERNL 内核管理程序
+C:\EZP3\KERNL\BLDCHAR.C      字符生成接口
+C:\EZP3\KERNL\BOXC.C         版框管理
+C:\EZP3\KERNL\CLPBOARD.C     裁剪板管理
+C:\EZP3\KERNL\DEVBW.C        黑白打印接口
+C:\EZP3\KERNL\DEVCOLOR.C     彩色打印接口
+C:\EZP3\KERNL\EZL.C          宏语言解释模块（可省）
+C:\EZP3\KERNL\FILEC.C        文件管理模块
+C:\EZP3\KERNL\FIXEDC.C       定点小数计算模块
+C:\EZP3\KERNL\FORM.C         表格管理模块
+C:\EZP3\KERNL\GROUPC.C       组（版框组）管理模块
+C:\EZP3\KERNL\HANDLEC.C      句柄管理模块（用于存储管理）
+C:\EZP3\KERNL\ITEMSC.C       版框元素管理模块
+C:\EZP3\KERNL\LINES.C        画线模块
+C:\EZP3\KERNL\META.C         图元文件处理（可省）
+C:\EZP3\KERNL\PAGEC.C        页管理模块
+C:\EZP3\KERNL\POLYFUNC.C     多边形计算接口
+C:\EZP3\KERNL\PRINTC.C       打印管理模块
+C:\EZP3\KERNL\ROTATEC.C      旋转算法
+C:\EZP3\KERNL\TABDATAC.C     打印机色彩校正数据（for EPSON）
+C:\EZP3\KERNL\UNDO.C         UNDO模块
+
+目录: \PRINTER 打印机驱动
+C:\EZP3\PRINTER\DEVBJ.C      北佳视频激光打印机(可省）
+C:\EZP3\PRINTER\DEVBJ10.C    佳能
+C:\EZP3\PRINTER\DEVBJC.C     佳能
+C:\EZP3\PRINTER\DEVCDJ.C     HP DeskJet
+C:\EZP3\PRINTER\DEVDCL.C     DCL (可省）
+C:\EZP3\PRINTER\DEVESCP.C    EPSON
+C:\EZP3\PRINTER\DEVFAX.C     传真
+C:\EZP3\PRINTER\DEVHP.C      HP Laserjet
+C:\EZP3\PRINTER\DEVLQ16.C    LQ1600
+C:\EZP3\PRINTER\DEVLQ24.C    LQ2550
+C:\EZP3\PRINTER\DEVM1724.C   M1724
+C:\EZP3\PRINTER\DEVOKI.C     OKI针打
+C:\EZP3\PRINTER\DEVPCX.C     PCX图像
+C:\EZP3\PRINTER\DEVSC.C      EPSON
+C:\EZP3\PRINTER\DEVSTARC.C   STAR AR3200
+C:\EZP3\PRINTER\DEVTIFF.C    TIF图像
+
+
+目录: \UI 用户界面
+C:\EZP3\UI\BUTTONC.C	     按钮
+C:\EZP3\UI\CHINESEC.C        中文显示
+C:\EZP3\UI\COMBOC.C          组合框
+C:\EZP3\UI\CONVERT.C         字符表格转换（省）
+C:\EZP3\UI\DBF.C             数据库读入+表格统计（删）
+C:\EZP3\UI\DIALOGC.C         对话框
+C:\EZP3\UI\DRAWC.C           画图
+C:\EZP3\UI\EXPRESS.C         表达式计算
+C:\EZP3\UI\EZPLOGC.C         加密
+C:\EZP3\UI\FAXC.C            传真
+C:\EZP3\UI\FRAMEC.C          框架
+C:\EZP3\UI\FUNC2.C           部分鼠标和快捷键处理
+C:\EZP3\UI\IDLE.C            空闲处理
+C:\EZP3\UI\INFORMC.C         出错提示
+C:\EZP3\UI\INSTFONT.C        安装字库（省）
+C:\EZP3\UI\KEYC.C            键盘处理
+C:\EZP3\UI\LISTBOXC.C        列表框
+C:\EZP3\UI\MAINC.C           主程序  
+C:\EZP3\UI\MEMORY.C          内存管理
+C:\EZP3\UI\MENUC.C           菜单
+C:\EZP3\UI\MENUCMD1.C        菜单命令处理
+C:\EZP3\UI\MESSAGEC.C        消息管理
+C:\EZP3\UI\MOUSEC.C          鼠标管理
+C:\EZP3\UI\OPENFILC.C        文件对话框
+C:\EZP3\UI\PRINTCUT.C        打印拼版（省）
+C:\EZP3\UI\PROFILEC.C        INI文件处理
+C:\EZP3\UI\RADIOBNC.C        单选钮
+C:\EZP3\UI\SCROLLC.C         滚动条
+C:\EZP3\UI\SELFONTC.C        选择字体界面
+C:\EZP3\UI\SINGLELC.C        单行编辑
+C:\EZP3\UI\STATICTC.C        标签
+C:\EZP3\UI\TIMER.C           定时器
+C:\EZP3\UI\TRANFILE.C        MODEM传送文件（省？）
+C:\EZP3\UI\USERATTR.C        参数设定对话框
+C:\EZP3\UI\USERBOXC.C        用户操作版框的界面
+C:\EZP3\UI\USERFAXC.C        用户操作传真的界面
+C:\EZP3\UI\USERFUNC.C        类似Func2.c
+C:\EZP3\UI\USERPAGE.C        用户页面设定
+C:\EZP3\UI\USERPRNC.C        用户设置打印机
+C:\EZP3\UI\VARC.C            全局变量和资源
+C:\EZP3\UI\WINDEFTC.C        Windows处理函数
+C:\EZP3\UI\WINDOWC.C         Windows处理函数

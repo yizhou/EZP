@@ -1,0 +1,2 @@
+..\printer\devlq24.c(15): Warning! W202: Symbol 'pagew' has been defined, but not referenced
+..\printer\devlq24.c(15): Warning! W202: Symbol 'pageh' has been defined, but not referenced

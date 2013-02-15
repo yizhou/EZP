@@ -1,0 +1,158 @@
+/*-------------------------------------------------------------------
+* Name: devnull.c
+* compiler :  Watcom C 10.0
+* Copyright (c) 1994,1995 REDTEK BUSINESS TECHNOLOGY LTD.
+-------------------------------------------------------------------*/
+#include "ezpHead.h"
+
+static int nul_init(UDATA pagew,UDATA pageh)
+{
+  //initgraph();
+  _setvideomode(0x12);
+  setcolor(EGA_WHITE);
+  bar(0,0,639,479);
+  setwritemode(COPY_PUT);
+  RastWidth=(printer->xpixel+7);
+  RastWidthByte = RastWidth>>3;
+  
+  RastHeight=printer->ypixel;
+  return 1;
+}
+static void nul_block() {}
+static void nul_FF() {}
+static void nul_over() { putch(7);getch();
+  _setvideomode(_VRES16COLOR);
+}
+
+static int nul_getheight() { return 120; }
+void nul_scanfill(int x1,int x2,int y1,LPDC lpdc)
+{
+      long byteoff;
+      int len;
+      UCHAR *pR,*pG,*pB;
+      int nx,ny1,ny2,i;
+      int top,bottom,left,right;
+
+      if (UsePrintCut())
+       {
+         right=min(RastWidth,printer->xpixel);
+         left=0;
+         top=PrinterBlockTop[CurrentPrinterBlock];
+         bottom=PrinterBlockBottom[CurrentPrinterBlock];
+       }
+      else
+       {
+         right=lpdc->right;
+         left=lpdc->left;
+         top=lpdc->top;
+         bottom=lpdc->bottom;
+       }
+
+      if (x1>x2) {
+         int tmp=x2;
+         x2=x1;
+         x1=tmp;
+      }
+
+if (GlobalRorate90)
+{
+      nx=PageHightDot-y1;
+      ny1=x1;
+      ny2=x2;
+
+      nx +=GlobalXOffset;
+      ny1 +=GlobalYOffset;
+      ny2 +=GlobalYOffset;
+
+      if (GlobalReverse)
+      {
+        nx=GlobalXRes-nx;
+      }
+
+      if (GlobalYReverse)
+      {
+        i=GlobalYRes-ny1;
+        ny1=GlobalYRes-ny2;
+        ny2=i;
+      }
+
+      if ((ny1>=bottom)||(ny2<top)) return;
+      if ((nx>=right)||(nx<left)) return;
+      if (ny1<top) ny1=top;
+      if (ny2>=bottom) ny2=bottom-1;
+
+   /*--------- added ByHance, 96,4.11, for printer's fixed margin ----*/
+      nx-=PrinterFixedLeftMargin;
+      if(nx<0) return;
+    /*------- end ------*/
+
+      fDither=TRUE;
+
+      line(nx,ny1,nx,ny2);
+
+      return ;
+}
+      x1 +=GlobalXOffset;
+      x2 +=GlobalXOffset;
+      y1  +=GlobalYOffset;
+
+      if (GlobalReverse)
+      {
+        i=GlobalXRes-x1;
+        x1=GlobalXRes-x2;
+        x2=i;
+      }
+
+      if (GlobalYReverse)
+      {
+        y1=GlobalYRes-y1;
+      }
+
+      if ((x1>=right)||(x2<left)) return;
+      if ((y1>=bottom)||(y1<top)) return;
+      if (x1<left) x1=left;
+      if (x2>=right) x2=right-1;
+      
+   /*--------- added ByHance, 96,4.11, for printer's fixed margin ----*/
+      x2-=PrinterFixedLeftMargin;
+      if(x2<0) return;
+      x1-=PrinterFixedLeftMargin;
+      if(x1<0) x1=0;
+    /*------- end ------*/
+
+      fDither=TRUE;
+      //if(y1>MaxRastY) MaxRastY=y1;
+
+      line(x1,y1,x2,y1);
+}
+static void nul_setcolor(int color)
+{
+   setcolor(color);
+}
+static void nul_setRGBcolor(int r,int g,int b)
+{
+}
+static void nul_setCMYKcolor(int c,int m,int y,int k)
+{
+}
+static void nul_setgray(int gray)
+{
+}
+
+PRINTER NULprinter = {
+  DEV_VGA,
+  nul_init,
+  nul_block,
+  nul_FF,
+  nul_over,
+  nul_getheight,
+  nul_scanfill,
+  nul_setcolor,
+  nul_setRGBcolor,
+  nul_setCMYKcolor,
+  nul_setgray,
+  50,
+  640,
+  480,
+  0,0,
+};

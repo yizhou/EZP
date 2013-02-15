@@ -1,0 +1,2 @@
+..\kernl\bldchar.c(11): Warning! W202: Symbol 'RotateAngle' has been defined, but not referenced
+..\kernl\bldchar.c(103): Warning! W301: No prototype found for 'ReportMemoryError'

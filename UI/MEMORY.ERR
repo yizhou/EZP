@@ -1,0 +1,2 @@
+../kernl/handlec.c(40): Warning! W202: Symbol 'AllocType' has been defined, but not referenced
+../kernl/handlec.c(52): Warning! W301: No prototype found for 'ReportMemoryError'

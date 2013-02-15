@@ -1,0 +1,5 @@
+..\printer\devfax.c(11): Warning! W202: Symbol 'pagew' has been defined, but not referenced
+..\printer\devfax.c(96): Warning! W202: Symbol 'y' has been defined, but not referenced
+..\printer\devfax.c(96): Warning! W202: Symbol 'm' has been defined, but not referenced
+..\printer\devfax.c(96): Warning! W202: Symbol 'k' has been defined, but not referenced
+..\printer\devfax.c(96): Warning! W202: Symbol 'c' has been defined, but not referenced

@@ -1,0 +1,5 @@
+..\kernl\polyfunc.c(402): Warning! W202: Symbol 'lpdc' has been defined, but not referenced
+..\kernl\polyfunc.c(561): Warning! W202: Symbol 'lpdc' has been defined, but not referenced
+..\kernl\polyfunc.c(648): Warning! W202: Symbol 'lpdc' has been defined, but not referenced
+..\kernl\polyfunc.c(756): Warning! W202: Symbol 'lpdc' has been defined, but not referenced
+..\kernl\polyfunc.c(854): Warning! W202: Symbol 'lpdc' has been defined, but not referenced

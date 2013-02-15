@@ -1,0 +1,3 @@
+messagec.c(487): Warning! W202: Symbol 'Shift' has been defined, but not referenced
+messagec.c(507): Warning! W202: Symbol 'MouseX' has been defined, but not referenced
+messagec.c(507): Warning! W202: Symbol 'MouseY' has been defined, but not referenced
